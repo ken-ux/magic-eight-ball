@@ -12,9 +12,11 @@ function Sphere(props: ThreeElements["mesh"]) {
   const [clicked, click] = useState(false);
   useFrame((_state, delta) => {
     if (clicked && ref.current.rotation.x <= THREE.MathUtils.degToRad(180)) {
-      ref.current.rotation.x += delta;
+      ref.current.rotation.x += delta * 4;
+      ref.current.position.z += delta * 3;
     } else if (!clicked && ref.current.rotation.x >= 0) {
-      ref.current.rotation.x -= delta;
+      ref.current.rotation.x -= delta * 4;
+      ref.current.position.z -= delta * 3;
     }
   });
 
@@ -32,7 +34,7 @@ function Sphere(props: ThreeElements["mesh"]) {
       onPointerOver={() => hover(true)}
       onPointerOut={() => hover(false)}
     >
-      <sphereGeometry args={[2, 64, 32]} />
+      <sphereGeometry args={[1, 64, 32]} />
       <meshStandardMaterial
         color={hovered ? "hotpink" : "orange"}
         // wireframe={true}
