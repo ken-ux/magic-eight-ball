@@ -1,7 +1,7 @@
 import { ThreeElements, useFrame, useLoader } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import * as THREE from "three";
-import color from "../assets/textures/ex.jpg";
+import color from "../assets/textures/cue.png";
 import metalness from "../assets/textures/metalness.jpg";
 import normal from "../assets/textures/normal.jpg";
 import roughness from "../assets/textures/roughness.jpg";
