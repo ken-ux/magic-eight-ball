@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
-// import Circle from "./components/Circle";
 import Sphere from "./components/Sphere";
+import Triangle from "./components/Triangle";
 
 function App() {
 
@@ -18,7 +18,7 @@ function App() {
         />
         <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
         <Sphere />
-        {/* <Circle /> */}
+        <Triangle position={[0, 0, 1]} />
       </Canvas>
     </div>
   );
