@@ -1,12 +1,20 @@
-import { ThreeElements } from "@react-three/fiber";
-// import { useFrame } from "@react-three/fiber";
+import { ThreeElements, useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import * as THREE from "three";
 
 function Triangle(props: ThreeElements["mesh"]) {
   const ref = useRef<THREE.Mesh>(null!);
+  const opacityRef = useRef(1);
   const [clicked, click] = useState(false);
-  // useFrame((_state, delta) => (ref.current.rotation.x += delta));
+
+  useFrame((_state, delta) => {
+    if (clicked) {
+      ref.current.rotation.z += delta;
+      opacityRef.current = 1;
+    } else {
+      opacityRef.current = 0.5;
+    }
+  });
 
   const vertices = [
     new THREE.Vector2(0, 0.75), // Top vertex
@@ -24,7 +32,7 @@ function Triangle(props: ThreeElements["mesh"]) {
     >
       {/* <bufferGeometry setFromPoints={vertices}/> */}
       <shapeGeometry args={[new THREE.Shape(vertices)]} />
-      <meshStandardMaterial color={clicked ? "hotpink" : "orange"} />
+      <meshStandardMaterial color={clicked ? "hotpink" : "orange"} transparent={true} opacity={opacityRef.current} />
     </mesh>
   );
 }
