@@ -4,15 +4,14 @@ import * as THREE from "three";
 
 function Triangle(props: ThreeElements["mesh"]) {
   const ref = useRef<THREE.Mesh>(null!);
-  const opacityRef = useRef(1);
   const [clicked, click] = useState(false);
+  const [opacity, setOpacity] = useState(1);
 
   useFrame((_state, delta) => {
-    if (clicked) {
-      ref.current.rotation.z += delta;
-      opacityRef.current = 1;
-    } else {
-      opacityRef.current = 0.5;
+    if (clicked && opacity >= 0) {
+      setOpacity((prevOpacity) => prevOpacity - delta);
+    } else if (!clicked && opacity <= 1) {
+      setOpacity((prevOpacity) => prevOpacity + delta);
     }
   });
 
@@ -30,9 +29,12 @@ function Triangle(props: ThreeElements["mesh"]) {
       rotation={[0, 0, 0]}
       onClick={() => click(!clicked)}
     >
-      {/* <bufferGeometry setFromPoints={vertices}/> */}
       <shapeGeometry args={[new THREE.Shape(vertices)]} />
-      <meshStandardMaterial color={clicked ? "hotpink" : "orange"} transparent={true} opacity={opacityRef.current} />
+      <meshStandardMaterial
+        color={clicked ? "hotpink" : "orange"}
+        transparent={true}
+        opacity={opacity}
+      />
     </mesh>
   );
 }
