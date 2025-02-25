@@ -5,14 +5,15 @@ import { TriangleProps } from "../types";
 
 function Triangle(props: TriangleProps) {
   const ref = useRef<THREE.Mesh>(null!);
-  const [clicked, click] = useState(false);
-  const [opacity, setOpacity] = useState(1);
+  const [opacity, setOpacity] = useState(0);
 
   useFrame((_state, delta) => {
-    if (clicked && opacity >= 0) {
+    if (props.triangleVisible) {
+      if (opacity <= 1) {
+        setOpacity((prevOpacity) => prevOpacity + delta);
+      }
+    } else if (opacity >= 0) {
       setOpacity((prevOpacity) => prevOpacity - delta);
-    } else if (!clicked && opacity <= 1) {
-      setOpacity((prevOpacity) => prevOpacity + delta);
     }
   });
 
@@ -23,16 +24,10 @@ function Triangle(props: TriangleProps) {
   ];
 
   return (
-    <mesh
-      {...props}
-      ref={ref}
-      scale={1}
-      rotation={[0, 0, 0]}
-      onClick={() => click(!clicked)}
-    >
+    <mesh {...props} ref={ref} scale={1} rotation={[0, 0, 0]}>
       <shapeGeometry args={[new THREE.Shape(vertices)]} />
       <meshStandardMaterial
-        color={clicked ? "hotpink" : "orange"}
+        color={"hotpink"}
         transparent={true}
         opacity={opacity}
       />

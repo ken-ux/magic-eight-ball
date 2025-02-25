@@ -11,13 +11,24 @@ function Sphere(props: SphereProps) {
   const ref = useRef<THREE.Mesh>(null!);
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
+
   useFrame((_state, delta) => {
-    if (clicked && ref.current.rotation.x <= THREE.MathUtils.degToRad(180)) {
-      ref.current.rotation.x += delta * 4;
-      ref.current.position.z += delta * 3;
-    } else if (!clicked && ref.current.rotation.x >= 0) {
-      ref.current.rotation.x -= delta * 4;
-      ref.current.position.z -= delta * 3;
+    if (clicked) {
+      if (ref.current.rotation.x <= THREE.MathUtils.degToRad(180)) {
+        ref.current.rotation.x += delta * 4;
+        ref.current.position.z += delta * 3;
+      }
+
+      // Check if ball has finished rolling forward
+      if (ref.current.rotation.x >= THREE.MathUtils.degToRad(180)) {
+        props.setTriangleVisible(true);
+      }
+    } else {
+      props.setTriangleVisible(false);
+      if (ref.current.rotation.x >= 0) {
+        ref.current.rotation.x -= delta * 4;
+        ref.current.position.z -= delta * 3;
+      }
     }
   });
 
