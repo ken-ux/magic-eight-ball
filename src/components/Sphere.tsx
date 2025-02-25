@@ -1,12 +1,13 @@
-import { ThreeElements, useFrame, useLoader } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import * as THREE from "three";
 import color from "../assets/textures/cue.png";
 import metalness from "../assets/textures/metalness.jpg";
 import normal from "../assets/textures/normal.jpg";
 import roughness from "../assets/textures/roughness.jpg";
+import { SphereProps } from "../types";
 
-function Sphere(props: ThreeElements["mesh"]) {
+function Sphere(props: SphereProps) {
   const ref = useRef<THREE.Mesh>(null!);
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
@@ -29,7 +30,6 @@ function Sphere(props: ThreeElements["mesh"]) {
     <mesh
       {...props}
       ref={ref}
-      // scale={clicked ? 1.5 : 1}
       onClick={() => click(!clicked)}
       onPointerOver={() => hover(true)}
       onPointerOut={() => hover(false)}
@@ -37,7 +37,6 @@ function Sphere(props: ThreeElements["mesh"]) {
       <sphereGeometry args={[1, 64, 32]} />
       <meshStandardMaterial
         color={hovered ? "hotpink" : "orange"}
-        // wireframe={true}
         displacementScale={0}
         map={colorMap}
         metalnessMap={metalnessMap}

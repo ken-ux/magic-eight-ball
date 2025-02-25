@@ -1,8 +1,9 @@
-import { ThreeElements, useFrame } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import * as THREE from "three";
+import { TriangleProps } from "../types";
 
-function Triangle(props: ThreeElements["mesh"]) {
+function Triangle(props: TriangleProps) {
   const ref = useRef<THREE.Mesh>(null!);
   const [clicked, click] = useState(false);
   const [opacity, setOpacity] = useState(1);

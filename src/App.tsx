@@ -1,9 +1,10 @@
 import { Canvas } from "@react-three/fiber";
+import { useState } from "react";
 import Sphere from "./components/Sphere";
 import Triangle from "./components/Triangle";
 
 function App() {
-
+  const [triangleVisible, setTriangleVisible] = useState(false);
 
   return (
     <div id="canvas-container">
@@ -17,8 +18,8 @@ function App() {
           intensity={Math.PI}
         />
         <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
-        <Sphere />
-        <Triangle position={[0, 0, 1]} />
+        <Sphere setTriangleVisible={setTriangleVisible} />
+        <Triangle position={[0, -0.2, 3.5]} triangleVisible={triangleVisible} />
       </Canvas>
     </div>
   );
