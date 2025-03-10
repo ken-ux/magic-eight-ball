@@ -6,6 +6,8 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-500: oklch(0.637 0.237 25.331);
+    --color-blue-200: oklch(0.882 0.059 254.128);
     --text-3xl: 1.875rem;
     --text-3xl--line-height: calc(2.25 / 1.875);
     --default-font-family: var(--font-sans);
@@ -164,55 +166,46 @@
   }
 }
 @layer utilities {
-  .container {
-    width: 100%;
-    @media (width >= 40rem) {
-      max-width: 40rem;
-    }
-    @media (width >= 48rem) {
-      max-width: 48rem;
-    }
-    @media (width >= 64rem) {
-      max-width: 64rem;
-    }
-    @media (width >= 80rem) {
-      max-width: 80rem;
-    }
-    @media (width >= 96rem) {
-      max-width: 96rem;
-    }
+  .absolute {
+    position: absolute;
+  }
+  .static {
+    position: static;
+  }
+  .z-10 {
+    z-index: 10;
+  }
+  .h-screen {
+    height: 100vh;
+  }
+  .bg-blue-200 {
+    background-color: var(--color-blue-200);
   }
   .text-3xl {
     font-size: var(--text-3xl);
     line-height: var(--tw-leading, var(--text-3xl--line-height));
   }
 }
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  color: #213547;
-  background-color: #ffffff;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  :root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    color: #213547;
+    background-color: #ffffff;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
-#canvas-container {
-  background-color: lightblue;
-  height: 100vh;
+@layer utility {
+  .test {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    border-color: var(--color-red-500);
+  }
 }
-#question-form {
-  z-index: 10;
-  position: absolute;
-}
-#prediction-text {
-  padding: 0px;
-  margin: 0px;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: red;
-  z-index: 10;
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
 }

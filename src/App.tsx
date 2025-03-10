@@ -14,9 +14,9 @@ function App() {
   };
 
   return (
-    <div id="canvas-container">
+    <div className="h-screen bg-blue-200">
       {/* <p id="prediction-text">Hello</p> */}
-      <form id="question-form" action="" onSubmit={formHandler}>
+      <form className="absolute z-10" action="" onSubmit={formHandler}>
         <div>
           <label htmlFor="question"></label>
           <input type="text" name="question" id="question" />
@@ -25,6 +25,7 @@ function App() {
           Submit
         </button>
       </form>
+      {/* <button type="button">Restart</button> */}
       <Canvas>
         <ambientLight intensity={Math.PI / 2} />
         <spotLight

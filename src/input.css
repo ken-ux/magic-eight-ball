@@ -1,36 +1,21 @@
 @import "tailwindcss";
 
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+@layer base {
+  :root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-  color: #213547;
-  background-color: #ffffff;
+    color: #213547;
+    background-color: #ffffff;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
-#canvas-container {
-  background-color: lightblue;
-  height: 100vh;
-}
-
-#question-form {
-  z-index: 10;
-  position: absolute;
-}
-
-#prediction-text {
-  padding: 0px;
-  margin: 0px;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: red;
-  z-index: 10;
+@layer utility {
+  .test {
+    @apply border border-red-500;
+  }
 }
