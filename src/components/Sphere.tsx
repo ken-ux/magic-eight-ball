@@ -10,10 +10,9 @@ import { SphereProps } from "../types";
 function Sphere(props: SphereProps) {
   const ref = useRef<THREE.Mesh>(null!);
   const [hovered, hover] = useState(false);
-  const [clicked, click] = useState(false);
 
   useFrame((_state, delta) => {
-    if (clicked) {
+    if (props.submitted) {
       if (ref.current.rotation.x <= THREE.MathUtils.degToRad(180)) {
         ref.current.rotation.x += delta * 4;
         ref.current.position.z += delta * 3;
@@ -41,7 +40,6 @@ function Sphere(props: SphereProps) {
     <mesh
       {...props}
       ref={ref}
-      onClick={() => click(!clicked)}
       onPointerOver={() => hover(true)}
       onPointerOut={() => hover(false)}
     >

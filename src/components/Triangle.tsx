@@ -12,19 +12,22 @@ function Triangle(props: TriangleProps) {
       if (opacity <= 1) {
         setOpacity((prevOpacity) => prevOpacity + delta);
       }
+      // if (opacity >= 1) {
+      //   ref.current.rotation.z += delta;
+      // }
     } else if (opacity >= 0) {
       setOpacity((prevOpacity) => prevOpacity - delta);
     }
   });
 
   const vertices = [
-    new THREE.Vector2(0, 0.75), // Top vertex
-    new THREE.Vector2(-0.5, 0), // Left vertex
-    new THREE.Vector2(0.5, 0), // Right vertex
+    new THREE.Vector2(0, 1.5), // Top vertex
+    new THREE.Vector2(-1, 0), // Left vertex
+    new THREE.Vector2(1, 0), // Right vertex
   ];
 
   return (
-    <mesh {...props} ref={ref} scale={1} rotation={[0, 0, 0]}>
+    <mesh {...props} scale={0.4} ref={ref}>
       <shapeGeometry args={[new THREE.Shape(vertices)]} />
       <meshStandardMaterial
         color={"hotpink"}
