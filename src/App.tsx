@@ -2,6 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import { FormEvent, useState } from "react";
 import Sphere from "./components/Sphere";
 import Triangle from "./components/Triangle";
+// import Tetrahedron from "./components/Tetrahedron";
 
 function App() {
   const [triangleVisible, setTriangleVisible] = useState(false);
@@ -36,6 +37,7 @@ function App() {
         <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
         <Sphere submitted={submitted} setTriangleVisible={setTriangleVisible} />
         <Triangle position={[0, -0.2, 3.5]} triangleVisible={triangleVisible} />
+        {/* <Tetrahedron position={[0, 0, 1]} /> */}
       </Canvas>
     </div>
   );
