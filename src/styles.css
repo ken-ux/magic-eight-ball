@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+@theme {
+  --animate-fadein: fadein 1s ease-in-out;
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
 @layer base {
   :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -15,6 +27,12 @@
 
   button {
     @apply hover:cursor-pointer;
+    @apply border border-slate-50;
+    @apply outline outline-slate-800;
+    @apply px-3 py-1;
+    @apply rounded-lg;
+    @apply bg-slate-800;
+    @apply text-slate-50;
   }
 }
 

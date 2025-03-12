@@ -29,12 +29,7 @@ function Form(props: FormProps) {
           required
         />
       </div>
-      <button
-        className="rounded-lg border border-slate-50 bg-slate-800 px-3 py-1 text-slate-50 outline outline-slate-800"
-        type="submit"
-      >
-        Submit
-      </button>
+      <button type="submit">Submit</button>
     </form>
   );
 }
