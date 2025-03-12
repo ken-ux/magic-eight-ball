@@ -1,3 +1,4 @@
+import { Environment } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useState } from "react";
 import Form from "./components/Form";
@@ -23,7 +24,7 @@ function App() {
   };
 
   return (
-    <div className="h-screen bg-radial-[at_50%_70%] from-sky-200 via-blue-400 to-indigo-900 to-100%">
+    <div className="h-screen bg-slate-300 animate-fadein">
       <p
         className={
           "absolute z-5 flex h-full w-full items-center justify-center text-white transition-all duration-700 ease-in-out " +
@@ -44,17 +45,18 @@ function App() {
         />
 
         {submitted && (
-          <button
-            type="button"
-            className="rounded-lg bg-slate-800 px-2 py-1 text-lg text-slate-50"
-            onClick={restartButtonHandler}
-          >
+          <button type="button" onClick={restartButtonHandler}>
             Restart
           </button>
         )}
       </div>
 
       <Canvas>
+        <Environment
+          background
+          backgroundBlurriness={0.4}
+          files="/venice_sunset_1k.hdr"
+        />
         <ambientLight intensity={Math.PI / 2} />
         <spotLight
           position={[10, 10, 10]}
