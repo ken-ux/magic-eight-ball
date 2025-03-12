@@ -16,7 +16,7 @@ function Triangle(props: TriangleProps) {
       //   ref.current.rotation.z += delta;
       // }
     } else if (opacity >= 0) {
-      setOpacity((prevOpacity) => prevOpacity - delta);
+      setOpacity((prevOpacity) => prevOpacity - delta * 5);
     }
   });
 
@@ -30,7 +30,7 @@ function Triangle(props: TriangleProps) {
     <mesh {...props} scale={0.4} ref={ref}>
       <shapeGeometry args={[new THREE.Shape(vertices)]} />
       <meshStandardMaterial
-        color={"hotpink"}
+        color="dodgerblue"
         transparent={true}
         opacity={opacity}
       />
