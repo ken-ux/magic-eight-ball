@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import Sphere from "./components/Sphere";
 import Triangle from "./components/Triangle";
 // import Tetrahedron from "./components/Tetrahedron";
@@ -7,6 +7,7 @@ import Triangle from "./components/Triangle";
 function App() {
   const [triangleVisible, setTriangleVisible] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [text, setText] = useState("");
 
   const formHandler = (e: FormEvent) => {
     e.preventDefault();
@@ -16,16 +17,45 @@ function App() {
   return (
     <div className="h-screen bg-blue-200">
       {/* <p id="prediction-text">Hello</p> */}
-      <form className="absolute z-10" action="" onSubmit={formHandler}>
-        <div>
-          <label htmlFor="question"></label>
-          <input type="text" name="question" id="question" />
-        </div>
-        <button className="text-3xl" type="submit">
-          Submit
+      <div className="absolute z-10 mt-10 flex w-full flex-col items-center">
+        <p className="text-center text-3xl">Ask the Magic 8 Ball</p>
+        <form
+          className="flex items-center justify-center gap-2"
+          action=""
+          onSubmit={formHandler}
+        >
+          <div>
+            <label htmlFor="question"></label>
+            <input
+              className="rounded-lg border border-blue-50 px-2 py-1 outline"
+              type="text"
+              name="question"
+              id="question"
+              placeholder="Will I win the lottery?"
+              value={text}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setText(e.target.value)
+              }
+              required
+            />
+          </div>
+          <button className="test px-2 py-0.5 text-lg" type="submit">
+            Submit
+          </button>
+        </form>
+
+        <button
+          type="button"
+          className="test"
+          onClick={() => {
+            setText("");
+            setSubmitted(false);
+          }}
+        >
+          Restart
         </button>
-      </form>
-      {/* <button type="button">Restart</button> */}
+      </div>
+
       <Canvas>
         <ambientLight intensity={Math.PI / 2} />
         <spotLight
