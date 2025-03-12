@@ -1,5 +1,6 @@
 import { Canvas } from "@react-three/fiber";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { useState } from "react";
+import Form from "./components/Form";
 import Sphere from "./components/Sphere";
 import Triangle from "./components/Triangle";
 // import Tetrahedron from "./components/Tetrahedron";
@@ -7,53 +8,36 @@ import Triangle from "./components/Triangle";
 function App() {
   const [triangleVisible, setTriangleVisible] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [text, setText] = useState("");
+  const [question, setQuestion] = useState("");
 
-  const formHandler = (e: FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
+  const restartButtonHandler = () => {
+    setQuestion("");
+    setSubmitted(false);
   };
 
   return (
-    <div className="h-screen bg-blue-200">
-      {/* <p id="prediction-text">Hello</p> */}
-      <div className="absolute z-10 mt-10 flex w-full flex-col items-center">
+    <div className="h-screen bg-radial-[at_50%_70%] from-sky-200 via-blue-400 to-indigo-900 to-100%">
+      <p className="absolute z-5 flex h-full w-full items-center justify-center text-white">
+        Hello
+      </p>
+      <div className="absolute z-10 mt-14 flex w-full flex-col items-center gap-6">
         <p className="text-center text-3xl">Ask the Magic 8 Ball</p>
-        <form
-          className="flex items-center justify-center gap-2"
-          action=""
-          onSubmit={formHandler}
-        >
-          <div>
-            <label htmlFor="question"></label>
-            <input
-              className="rounded-lg border border-blue-50 px-2 py-1 outline"
-              type="text"
-              name="question"
-              id="question"
-              placeholder="Will I win the lottery?"
-              value={text}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setText(e.target.value)
-              }
-              required
-            />
-          </div>
-          <button className="test px-2 py-0.5 text-lg" type="submit">
-            Submit
-          </button>
-        </form>
+        <Form
+          submitted={submitted}
+          setSubmitted={setSubmitted}
+          question={question}
+          setQuestion={setQuestion}
+        />
 
-        <button
-          type="button"
-          className="test"
-          onClick={() => {
-            setText("");
-            setSubmitted(false);
-          }}
-        >
-          Restart
-        </button>
+        {submitted && (
+          <button
+            type="button"
+            className="rounded-lg bg-slate-800 px-2 py-1 text-lg text-slate-50"
+            onClick={restartButtonHandler}
+          >
+            Restart
+          </button>
+        )}
       </div>
 
       <Canvas>
