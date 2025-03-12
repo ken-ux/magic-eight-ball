@@ -2,8 +2,8 @@ import { Canvas } from "@react-three/fiber";
 import { useState } from "react";
 import Form from "./components/Form";
 import Sphere from "./components/Sphere";
-import Triangle from "./components/Triangle";
 // import Tetrahedron from "./components/Tetrahedron";
+import Triangle from "./components/Triangle";
 
 function App() {
   const [triangleVisible, setTriangleVisible] = useState(false);
@@ -24,11 +24,14 @@ function App() {
 
   return (
     <div className="h-screen bg-radial-[at_50%_70%] from-sky-200 via-blue-400 to-indigo-900 to-100%">
-      {submitted && (
-        <p className="absolute z-5 flex h-full w-full items-center justify-center text-white">
-          {answer}
-        </p>
-      )}
+      <p
+        className={
+          "absolute z-5 flex h-full w-full items-center justify-center text-white transition-all duration-700 ease-in-out " +
+          (submitted ? "opacity-100 delay-1200" : "opacity-0")
+        }
+      >
+        {answer}
+      </p>
 
       <div className="absolute z-10 mt-14 flex w-full flex-col items-center gap-6">
         <p className="text-center text-3xl">Ask the Magic 8 Ball</p>
