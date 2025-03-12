@@ -15,4 +15,5 @@ export interface FormProps {
   submitted: boolean;
   setQuestion: React.Dispatch<SetStateAction<string>>;
   question: string;
+  randomizeAnswer: VoidFunction;
 }

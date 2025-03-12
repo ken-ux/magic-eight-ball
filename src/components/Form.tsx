@@ -5,6 +5,7 @@ function Form(props: FormProps) {
   const formHandler = (e: FormEvent) => {
     e.preventDefault();
     props.setSubmitted(true);
+    props.randomizeAnswer();
   };
 
   return (
