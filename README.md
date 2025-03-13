@@ -1,50 +1,22 @@
-# React + TypeScript + Vite
+# Magic Eight Ball
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple web app that lets you ask a question to the Magic Eight Ball and receive a randomized answer. I did this project to learn [Three.js](https://github.com/mrdoob/three.js) since I've been interested in working with 3D graphics in browser apps. I used a popular library version that's suited for React apps called [react-three-fiber](https://github.com/pmndrs/react-three-fiber).
 
-Currently, two official plugins are available:
+Live version can be found here: https://magic-8-ball-ken.netlify.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technology Used
 
-## Expanding the ESLint configuration
+- React
+- TypeScript
+- Tailwind CSS
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Lessons Learned
 
-- Configure the top-level `parserOptions` property like this:
+- Loading texture maps and applying them to an object's mesh material.
+- Loading an environment into the scene.
+- Using Three.js's math utility methods to correctly rotate a sphere 180 degrees by converting degree measurements into radians, which is the unit used for an object's rotation.
+- Not directly related to the project's purpose, but I learned that Tailwind's latest update means that I no longer have to run a script that watches and compiles a Tailwind CSS file as I'm making style changes. You can see this in my past projects where I tend to run the Tailwind CSS compilation script in parallel with my script for running a dev server with vite.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Credits
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+I downloaded the venice sunset HDRI used for the scene's environment from [Poly Haven](https://polyhaven.com/).
