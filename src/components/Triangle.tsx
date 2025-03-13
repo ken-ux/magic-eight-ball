@@ -1,3 +1,4 @@
+import { GradientTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import * as THREE from "three";
@@ -29,11 +30,12 @@ function Triangle(props: TriangleProps) {
   return (
     <mesh {...props} scale={0.4} ref={ref}>
       <shapeGeometry args={[new THREE.Shape(vertices)]} />
-      <meshStandardMaterial
-        color="dodgerblue"
-        transparent={true}
-        opacity={opacity}
-      />
+      <meshStandardMaterial transparent={true} opacity={opacity}>
+        <GradientTexture
+          stops={[0, 0.4, 1]}
+          colors={["mediumblue", "darkblue", "midnightblue"]}
+        />
+      </meshStandardMaterial>
     </mesh>
   );
 }
