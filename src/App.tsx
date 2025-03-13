@@ -23,7 +23,7 @@ function App() {
   };
 
   return (
-    <div className="animate-fadein h-screen bg-slate-400">
+    <div className="h-screen bg-slate-300">
       <p
         className={
           "absolute z-5 flex h-full w-full items-center justify-center text-3xl text-white transition-all duration-700 ease-in-out " +
