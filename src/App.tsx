@@ -3,7 +3,6 @@ import { Canvas } from "@react-three/fiber";
 import { useState } from "react";
 import Form from "./components/Form";
 import Sphere from "./components/Sphere";
-// import Tetrahedron from "./components/Tetrahedron";
 import Triangle from "./components/Triangle";
 
 function App() {
@@ -24,10 +23,10 @@ function App() {
   };
 
   return (
-    <div className="h-screen bg-slate-300 animate-fadein">
+    <div className="animate-fadein h-screen bg-slate-300">
       <p
         className={
-          "absolute z-5 flex h-full w-full items-center justify-center text-white transition-all duration-700 ease-in-out " +
+          "absolute z-5 flex h-full w-full items-center justify-center text-3xl text-white transition-all duration-700 ease-in-out " +
           (submitted ? "opacity-100 delay-1200" : "opacity-0")
         }
       >
@@ -68,7 +67,6 @@ function App() {
         <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
         <Sphere submitted={submitted} setTriangleVisible={setTriangleVisible} />
         <Triangle position={[0, -0.2, 3.5]} triangleVisible={triangleVisible} />
-        {/* <Tetrahedron position={[0, 0, 1]} /> */}
       </Canvas>
     </div>
   );
